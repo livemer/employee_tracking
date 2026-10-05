@@ -3,6 +3,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {Header} from './components/Header.jsx'
 import {Editor} from './components/Editor.jsx'
+import { employee } from './mock.js'
 
 const darkTheme = createTheme({
   palette: {
@@ -20,7 +21,7 @@ function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <Container fixed sx={{mt: "40px"}}>
-        <Header employee="5" bonus="1"/>
+        <Header employee={employee.length} bonus="1"/>
         <Editor />
       </Container>
     </ThemeProvider>

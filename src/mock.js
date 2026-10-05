@@ -1,0 +1,37 @@
+export const employee = [
+  {
+    key:0,
+    name:"Mike",
+    pay:1000,
+    up:false,
+    bonus:false
+  },
+  {
+    key:1,
+    name:"Jack",
+    pay:1200,
+    up:false,
+    bonus:false
+  },
+  {
+    key:2,
+    name:"John",
+    pay:800,
+    up:false,
+    bonus:false
+  },
+  {
+    key:3,
+    name:"Antony",
+    pay:2000,
+    up:false,
+    bonus:true
+  },
+  {
+    key:4,
+    name:"Marina",
+    pay:3000,
+    up:false,
+    bonus:false
+  }
+]

@@ -1,3 +1,5 @@
+
+
 export const Header = ({ employee, bonus }) => {
   return <header className="bg-green-900 p-8 flex flex-col gap-3 rounded-lg">
       <h1 className="font-medium text-3xl">Учет сотрудников компании №</h1>
