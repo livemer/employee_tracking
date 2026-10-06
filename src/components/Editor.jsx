@@ -15,5 +15,13 @@ export const Editor = () => {
     <div className="py-6 flex flex-col gap-3 rounded-lg">
       <EmployeeList />
     </div>
+    <div className="bg-green-900 p-8 flex flex-col gap-3 rounded-lg">
+        <h2 className="text-2xl">Добавьте нового сотрудника</h2>
+        <div className="flex gap-2">
+          <TextField sx={{width:"40%"}} id="filled-basic" label="Как его зовут?" variant="outlined"  color="secondary"/>
+          <TextField sx={{width:"40%"}} id="filled-basic" label="ЗП в $" variant="outlined"  color="secondary"/>
+          <Button sx={{width:"20%"}} variant="contained">Добавить</Button>
+        </div>
+    </div>
   </div>
 };
