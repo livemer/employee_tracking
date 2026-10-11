@@ -6,10 +6,11 @@ import { employee } from '../mock.js'
 
 export const EmployeeList = () => {
   return (
+    <div className="py-6 flex flex-col gap-3 rounded-lg">
       <ul className="flex flex-col gap-6">
-        {employee.map(({key, name, up, pay, bonus}) => {
+        {employee.map(({id, name, up, pay, bonus}, index) => {
           return <>
-            {key != 0 && <Divider color="black" />}
+            {index != 0 && <Divider color="black" />}
             <li className="flex justify-between items-center px-6" style={{ color: bonus ? '#bda915' : 'black' }}>
               <p className="text-xl font-medium">{name}</p>
               <div className="flex gap-40 items-center">
@@ -27,5 +28,6 @@ export const EmployeeList = () => {
           </>
         }) }
       </ul>
+    </div>
   )
 };
