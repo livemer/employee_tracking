@@ -1,34 +1,34 @@
-export const employee = [
+export const employeeList = [
   {
-    key:0,
+    id:0,
     name:"Mike",
     pay:1000,
     up:false,
     bonus:false
   },
   {
-    key:1,
+    id:1,
     name:"Jack",
     pay:1200,
     up:false,
     bonus:false
   },
   {
-    key:2,
+    id:2,
     name:"John",
     pay:800,
     up:false,
     bonus:false
   },
   {
-    key:3,
+    id:3,
     name:"Antony",
     pay:2000,
     up:false,
     bonus:true
   },
   {
-    key:4,
+    id:4,
     name:"Marina",
     pay:3000,
     up:false,
