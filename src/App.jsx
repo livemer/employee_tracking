@@ -24,11 +24,8 @@ function App() {
   const [payFilter, setPayFilter] = useState(false);
   const [upFilter, setUpFilter] = useState(false);
   const bonusEmployee = employee.filter((item) => item.bonus)
-  
-  const [name, setName] = useState("");
-  const [pay, setPay] = useState("");
 
-  const addEmployee = () => {
+  const addEmployee = (name, pay) => {
     const newEmployee = {
       id: employee.length,
       name,
@@ -36,6 +33,7 @@ function App() {
       up: false,
       bonus: false
     }
+    console.log(newEmployee)
     setEmployee([...employee, newEmployee])
   }
 
@@ -66,7 +64,7 @@ function App() {
         <Header employee={employee.length} bonus={bonusEmployee.length} />
         <Main>
           <FilterPanel
-            setFilter={setNameFilter}
+            setNameFilter={setNameFilter}
             setPayFilter={setPayFilter}
             setUpFilter={setUpFilter}
           />
@@ -77,8 +75,7 @@ function App() {
             setUp={setUp}
             setBonus={setBonus}
           />
-          <AddEmployeePanel setName={setName}
-            setPay={setPay}
+          <AddEmployeePanel
             addEmployee={addEmployee}
           />
         </Main>

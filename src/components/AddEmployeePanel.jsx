@@ -1,53 +1,68 @@
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { useFormStatus } from "react-dom"
-import { useState } from "react";
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
-function SubmitBtn(){
-    const { pending } = useFormStatus()
-    return (
-      <Button type="submit" disabled={ pending } sx={{width:"20%"}} variant="contained">{pending ? "Добавление..." : "Добавить"}</Button>
-    )
-  }
+const schema = yup.object({
+  name: yup
+    .string()
+    .trim()
+    .required('Введите имя сотрудника'),
+  pay: yup
+    .number()
+    .typeError('Введите корректное число')
+    .required('Введите зарплату')
+    .min(0, 'Зарплата не может быть меньше нуля'),
+});
 
-export const AddEmployeePanel = ( {setName, setPay, addEmployee} ) => {
-  const [error, setError] = useState('');
+export const AddEmployeePanel = ({ addEmployee }) => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
-  function add(formData){
-    let pay = formData.get("pay")
-    const name = formData.get("name")
-    
-    if (!pay || !name) {
-      setError('Заполните все поля.');
-      return;
-    }
-    
-    if(name.length < 1){
-      setError("Введите имя.")
-      return
-    }
-    
-    if(isNaN(pay)){
-      setError("Зарплата должна быть числом.")
-      return
-    }
+  const onSubmit = ({ name, pay }) => {
+    addEmployee(name, pay);
+    reset();
+  };
 
-    if(pay < 0){
-      setError("Зарплата не может быть ниже нуля.")
-      return
-    }
+  return (
+    <div className="bg-green-900 p-8 flex flex-col gap-3 rounded-lg">
+      <h2 className="text-2xl">Добавьте нового сотрудника</h2>
+      <form onSubmit={handleSubmit(onSubmit)} className="flex gap-2 relative">
+        {(errors.name || errors.pay) && (
+          <span className="absolute text-right bottom-18 w-full text-red-300">
+            {errors.name?.message || errors.pay?.message}
+          </span>
+        )}
 
-    addEmployee()
-    setError("")
-  }
+        <TextField
+          sx={{ width: '50%' }}
+          id="employee-name"
+          label="Как его зовут?"
+          variant="outlined"
+          color="secondary"
+          {...register('name')}
+        />
 
-  return <div className="bg-green-900 p-8 flex flex-col gap-3 rounded-lg">
-        <h2 className="text-2xl">Добавьте нового сотрудника</h2>
-        <form className="flex gap-2 relative" action={add}>
-          { error && <p className="absolute text-center bottom-18 w-full text-red-300">{error}</p>}
-          <TextField name="name" onChange={(e) => {setName(e.target.value); setError("")}} sx={{width:"50%"}} id="filled-basic" label="Как его зовут?" variant="outlined"  color="secondary"/>
-          <TextField name="pay" onChange={(e) => {setPay(e.target.value); setError("")}} sx={{width:"30%"}} id="filled-basic" label="Зарплата" variant="outlined"  color="secondary"/>
-          <SubmitBtn/>
-        </form>
+        <TextField
+          sx={{ width: '30%' }}
+          id="employee-pay"
+          label="Зарплата"
+          variant="outlined"
+          color="secondary"
+          {...register('pay')}
+        />
+
+        <Button type="submit" sx={{ width: '20%' }} variant="contained">
+          Добавить
+        </Button>
+      </form>
     </div>
-}
+  );
+};
