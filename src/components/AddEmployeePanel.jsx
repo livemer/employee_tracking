@@ -32,9 +32,9 @@ export const AddEmployeePanel = ({ addEmployee }) => {
   };
 
   return (
-    <div className="bg-green-900 p-8 flex flex-col gap-3 rounded-lg">
-      <h2 className="text-2xl">Добавьте нового сотрудника</h2>
-      <form onSubmit={handleSubmit(onSubmit)} className="flex gap-2 relative">
+    <div className="bg-green-900 p-4 lg:p-8 flex flex-col gap-3 rounded-lg">
+      <h2 className="text-xl lg:text-2xl">Добавьте нового сотрудника</h2>
+      <form onSubmit={handleSubmit(onSubmit)} className="flex gap-2 relative flex-col lg:flex-row">
         {(errors.name || errors.pay) && (
           <span className="absolute text-right bottom-18 w-full text-red-300">
             {errors.name?.message || errors.pay?.message}
@@ -42,7 +42,7 @@ export const AddEmployeePanel = ({ addEmployee }) => {
         )}
 
         <TextField
-          sx={{ width: '50%' }}
+          sx={{ width: {lg: '50%'} }}
           id="employee-name"
           label="Как его зовут?"
           variant="outlined"
@@ -52,7 +52,7 @@ export const AddEmployeePanel = ({ addEmployee }) => {
         />
 
         <TextField
-          sx={{ width: '30%' }}
+          sx={{ width: {lg: '30%'} }}
           id="employee-pay"
           label="Зарплата"
           variant="outlined"
@@ -61,7 +61,7 @@ export const AddEmployeePanel = ({ addEmployee }) => {
           {...register('pay')}
         />
 
-        <Button type="submit" sx={{ width: '20%' }} variant="contained">
+        <Button type="submit" sx={{ width: {lg: '20%'} }} variant="contained">
           Добавить
         </Button>
       </form>

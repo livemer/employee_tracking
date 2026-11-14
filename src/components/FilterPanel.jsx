@@ -27,9 +27,9 @@ export const FilterPanel = ({ setNameFilter, setPayFilter, setUpFilter }) => {
   }
 
   return (
-    <div className="bg-green-900 p-8 flex flex-col gap-3 rounded-lg">
+    <div className="bg-green-900 p-4 lg:p-8 flex flex-col gap-3 rounded-lg">
       <TextField onChange={(e) => setNameFilter(e.target.value)} id="filled-basic" label="Найти сотрудника" variant="filled" color="secondary" />
-      <div className="flex gap-2">
+      <div className="flex gap-2 lg:flex-row flex-col">
         <Button onClick={() => setSelected(1)} {...getProps(1)}>Все сотрудники</Button>
         <Button onClick={() => setSelected(2)} {...getProps(2)}>На повышение</Button>
         <Button onClick={() => setSelected(3)} {...getProps(3)}>З/П больше 1000$</Button>

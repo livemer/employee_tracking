@@ -19,7 +19,7 @@ export const EmployeeList = ({ employee, removeEmployee, setUp, setBonus }) => {
                 {up && <ArrowUpwardIcon fontSize="medium" sx={{ color: '#2e7d32', ml: 0.5 }} />}
                 {bonus && <PaidIcon fontSize="medium" sx={{ color: '#e7c143', ml: 0.5 }} />}
               </p>
-              <div className="flex gap-40 items-center">
+              <div className="flex gap-2 lg:gap-40 items-center">
                 <p className="text-xl">{pay}$</p>
                 <div className="flex gap-4">
                   <IconButton onClick={() => setUp(id)} aria-label="up" size="small">
