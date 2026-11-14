@@ -28,7 +28,7 @@ export const AddEmployeePanel = ({ addEmployee }) => {
 
   const onSubmit = ({ name, pay }) => {
     addEmployee(name, pay);
-    reset();
+    reset()
   };
 
   return (
@@ -47,6 +47,7 @@ export const AddEmployeePanel = ({ addEmployee }) => {
           label="Как его зовут?"
           variant="outlined"
           color="secondary"
+          error={Boolean(errors.name)}
           {...register('name')}
         />
 
@@ -56,6 +57,7 @@ export const AddEmployeePanel = ({ addEmployee }) => {
           label="Зарплата"
           variant="outlined"
           color="secondary"
+          error={Boolean(errors.pay)}
           {...register('pay')}
         />
 

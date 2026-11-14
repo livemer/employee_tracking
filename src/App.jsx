@@ -24,6 +24,7 @@ function App() {
   const [payFilter, setPayFilter] = useState(false);
   const [upFilter, setUpFilter] = useState(false);
   const bonusEmployee = employee.filter((item) => item.bonus)
+  const upEmployee = employee.filter((item) => item.up)
 
   const addEmployee = (name, pay) => {
     const newEmployee = {
@@ -61,7 +62,7 @@ function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <Container fixed sx={{mt: "40px"}}>
-        <Header employee={employee.length} bonus={bonusEmployee.length} />
+        <Header employee={employee.length} bonus={bonusEmployee.length} up={upEmployee.length}/>
         <Main>
           <FilterPanel
             setNameFilter={setNameFilter}
